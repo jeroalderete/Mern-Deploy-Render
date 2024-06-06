@@ -1,0 +1,61 @@
+{{> header}}
+
+
+<div>
+   <h1>Home</h1>
+   <h3>Login Desafio</h3>
+
+   <table border="1" cellspacing="0" cellpadding="5">
+      <thead>
+         <tr>
+            <th><strong>id</strong></th>
+            <th><strong>Titulo</strong></th>
+            <th><strong>Descripcion</strong></th>
+            <th><strong>Precio</strong></th>
+            <th><strong>Codigo</strong></th>
+            <th><strong>Stock</strong></th>
+            <th><strong>Category</strong></th>
+            <th><strong>Status</strong></th>
+            <th><strong>Imagen</strong></th>
+         </tr>
+      </thead>
+      <tbody>
+         {{#each productos}}
+            <tr>
+               <td>{{this._id}}</td>
+               <td>{{this.title}}</td>
+               <td>{{this.description}}</td>
+               <td>{{this.price}}</td>
+               <td>{{this.code}}</td>
+               <td>{{this.stock}}</td>
+               <td>{{this.category}}</td>
+               <td>
+                  {{#if this.status}}
+                     Activo
+
+                  {{else}}
+
+                     Desactivado
+
+                  {{/if}}
+
+               </td>
+               <td>
+
+
+                {{#if this.thumbnail}}
+                
+                <!------ <a href=" {{this.thumbnail}}" target="_blank">  Imagen </a> --->
+
+                <img src="{{this.thumbnail}}" alt="" style="width: 100px; height: 100px;">
+
+                {{else}}
+                No Hay Imagen
+                {{/if}}
+              </td>
+            </tr>
+         {{/each}}
+      </tbody>
+   </table>
+</div>
+

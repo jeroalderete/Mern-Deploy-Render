@@ -1,0 +1,134 @@
+<div>
+
+    {{> header}}
+
+    <h1>bIENVENIDO {{isUserAuthenticated}}</h1>
+    <h3>Real Time Products DATABASE</h3>
+
+
+    <a href="/add-product" >Agregar Producto</a>
+
+    <table border="1" cellspacing="0" cellpadding="5">
+        <thead>
+            <tr>
+                <th><strong>id</strong></th>
+                <th><strong>Titulo</strong></th>
+                <th><strong>Descripcion</strong></th>
+                <th><strong>Precio</strong></th>
+                <th><strong>Codigo</strong></th>
+                <th><strong>Stock</strong></th>
+                <th><strong>Category</strong></th>
+                <th><strong>Status</strong></th>
+                <th><strong>Imagen</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each result.payload}}
+            <tr>
+                <td>{{this._id}}</td>
+                <td>{{this.title}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.code}}</td>
+                <td>{{this.stock}}</td>
+                <td>{{this.category}}</td>
+                <td>
+                    {{#if this.status}}
+                    Activo
+
+                    {{else}}
+
+                    Desactivado
+
+                    {{/if}}
+
+                </td>
+                <td>
+
+                    {{#if this.thumbnail}}
+
+                    <a href=" {{this.thumbnail}}" target="_blank">
+                        {{this.thumbnail}}
+                    </a>
+
+                    {{else}}
+                    No Hay Imagen
+                    {{/if}}
+                </td>
+                <td>
+                    <button style="height: 50px; width:100px;" class="cart-button" onclick="addToCart('{{this._id}}')">
+                        Add To cart</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>/produc
+    <div class="pagination">
+
+
+        <span>Limite de productos por Pagina: {{result.limit}}</span>
+
+        {{#if result.query}}
+
+        <span>Filtrado por {{result.query}}</span>
+
+        {{/if}}
+
+
+
+        {{#if result.hasprevPage}}
+
+        <a
+            href="?page={{result.prevPage}}&limit={{result.limit}}{{#if result.query}}&query={{result.query}} {{/if}} ">Anterior</a>
+
+        {{/if}}
+
+        {{#if result.hasprevPage}}
+        <span>Pagina {{result.page}} de {{result.totalPages}}</span>
+
+        {{/if}}
+
+        {{#if result.hasnextPage}}
+
+        <a
+            href="?page={{result.nextPage}}&limit={{result.limit}}{{#if result.query}}&query={{result.query}} {{/if}} ">Siguiente</a>
+
+        {{/if}}
+
+
+    </div>
+
+<script>
+
+        function addToCart(productId) {
+
+            console.log("aca product id ----->" + productId)
+
+            const idCart = '66568ae21379c35310bd36d1';
+
+            // como segundo argumento recibimos el metodo
+
+            fetch(`/api/carts/${idCart}/products/${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            
+            .then(resp => resp.json())
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(error => {
+                    console.log("error")
+                })
+
+
+
+        }
+
+
+    </script>
+
+
+</div>

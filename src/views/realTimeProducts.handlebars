@@ -1,0 +1,80 @@
+
+<style>
+   body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0;
+   padding: 0; display: flex; justify-content: center; align-items: center;
+   height: 100vh; } h1 { color: #333; } #producto-form { background-color: #fff;
+   padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   max-width: 400px; width: 100%; } #producto-form div { margin-bottom: 15px; }
+   #producto-form label { display: block; margin-bottom: 5px; font-weight: bold;
+   } #producto-form input { width: 100%; padding: 8px; box-sizing: border-box;
+   border: 1px solid #ccc; border-radius: 4px; } #producto-form button {
+   background-color: #4CAF50; color: white; padding: 10px 15px; border: none;
+   border-radius: 4px; cursor: pointer; width: 100%; } #producto-form
+   button:hover { background-color: #45a049; }
+</style>
+
+
+<div style="padding-top: 320px">
+{{> header}}
+
+   <h1>Real Time Products</h1>
+
+   <h3>Lista de Productos</h3>
+
+   <table border="1" cellspacing="0" cellpadding="5">
+      <thead>
+         <tr>
+            <th><strong>id</strong></th>
+            <th><strong>Titulo</strong></th>
+            <th><strong>Descripcion</strong></th>
+            <th><strong>Precio</strong></th>
+            <th><strong>Codigo</strong></th>
+            <th><strong>Stock</strong></th>
+            <th><strong>Category</strong></th>
+            <th><strong>Status</strong></th>
+            <th><strong>Imagen</strong></th>
+         </tr>
+      </thead>
+      <tbody id="productos-body">
+
+      </tbody>
+   </table>
+   <h2>Agregar Producto</h2>
+   <form id="producto-form">
+      <div>
+         <label for="titulo">Título:</label>
+         <input type="text" id="titulo" name="titulo" required />
+      </div>
+      <div>
+         <label for="descripcion">Descripción:</label>
+         <input type="text" id="descripcion" name="descripcion" required />
+      </div>
+      <div>
+         <label for="precio">Precio:</label>
+         <input type="number" id="precio" name="precio" required />
+      </div>
+      <div>
+         <label for="codigo">Código:</label>
+         <input type="text" id="codigo" name="codigo" required />
+      </div>
+      <div>
+         <label for="stock">Stock:</label>
+         <input type="number" id="stock" name="stock" required />
+      </div>
+      <div>
+         <label for="categoria">Categoría:</label>
+         <input type="text" id="categoria" name="categoria" required />
+      </div>
+      <div>
+         <label for="thumbnails">Thumbnail:</label>
+         <input type="text" id="thumbnails" name="thumbnails" required />
+      </div>
+      <div>
+         <button type="submit">Agregar Producto</button>
+      </div>
+   </form>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>

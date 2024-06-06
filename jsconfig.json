@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "ES6",
+    "jsx": "preserve",
+    "checkJs": false,  // Cambiado a false para desactivar la verificación de tipos en archivos JS
+    "allowJs": true,   // Permitir que TypeScript maneje archivos JavaScript
+    "target": "ES6",
+    "moduleResolution": "node"
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}
+
+/*  CONFIGURACION CON TYPESCRIPT ACTIVADO
+
+{
+  "compilerOptions": {
+    "module": "ES6",
+    "jsx": "preserve",
+    "checkJs": true
+  },
+  "exclude": ["node_modules", "**/ /* node_modules */ /* "]
+}
+*/
